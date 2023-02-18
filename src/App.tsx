@@ -1,14 +1,13 @@
-import classes from './App.module.css';
 import React from 'react';
-import { DatePicker } from 'antd';
+import classes from './App.module.css';
+import EPaths from './components/EPaths/EPaths';
 
 function App() {
   return (
-    <div className={classes.app}>
-      <div className={classes.main_container}>
-        <DatePicker />
-      </div>
-    </div>
+    <section className={classes.app}>
+      <EPaths />
+      <section>Selected path</section>
+    </section>
   );
 }
 
