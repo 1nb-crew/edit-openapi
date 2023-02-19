@@ -31,10 +31,11 @@ function render({ onConfirm }: Props) {
         status: 'uploading',
       };
 
-      setFileList([fileListItem]);
-      const fileContent = await (fsFile.file as File).text();
+      let fileContent = '';
 
+      setFileList([fileListItem]);
       try {
+        fileContent = await (fsFile.file as File).text();
         JSON.parse(fileContent);
         localStorage.setItem('schema', fileContent);
         appState?.restoreSchemaFromLocalStorage();

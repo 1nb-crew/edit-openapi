@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react';
 import classes from './style.module.css';
-import { Button, Drawer } from 'antd';
+import { Button, Drawer, Space } from 'antd';
 import FileSelector from '../../../components/FileSelector/FileSelector';
 import { AppContext } from '../StartPage';
+import ApiPaths from './components/ApiPaths/ApiPaths';
 
 function render() {
   const [isImportShown, setIsImportShown] = useState(false);
@@ -16,24 +17,31 @@ function render() {
     setIsImportShown(false);
   };
 
+  const handlePathClick = (path: string) => {
+    appState?.setSelectedPath(path);
+  };
+
   return (
-    <section className={classes.root}>
-      <div>
-        <Button type="primary" onClick={handleButtonClick}>
-          Import from file
-        </Button>
-        <div>{appState?.schema.openapi}</div>
-        {isImportShown ? (
-          <Drawer
-            open={true}
-            placement="left"
-            onClose={() => setIsImportShown(false)}
-          >
-            <FileSelector onConfirm={handleFileLoad}></FileSelector>
-          </Drawer>
-        ) : null}
-      </div>
-    </section>
+    <Space direction="vertical" className={classes.root}>
+      <Button type="primary" onClick={handleButtonClick}>
+        Import from file
+      </Button>
+      <div className={classes.divider}></div>
+      <ApiPaths
+        paths={appState?.schema?.paths}
+        onPathClick={handlePathClick}
+      ></ApiPaths>
+
+      {isImportShown ? (
+        <Drawer
+          open={true}
+          placement="left"
+          onClose={() => setIsImportShown(false)}
+        >
+          <FileSelector onConfirm={handleFileLoad}></FileSelector>
+        </Drawer>
+      ) : null}
+    </Space>
   );
 }
 

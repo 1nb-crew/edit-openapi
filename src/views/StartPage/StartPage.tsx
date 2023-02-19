@@ -20,7 +20,7 @@ function render() {
           <PathsList />
         </div>
         <div className={classes.main_container}>
-          <section>Path detail</section>
+          <section>{appState?.selectedPath}</section>
         </div>
       </AppContext.Provider>
     </section>
