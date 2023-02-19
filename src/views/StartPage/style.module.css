@@ -1,8 +1,13 @@
 .app {
     display: grid;
-    grid-template-columns: 12rem 1fr;
+    grid-template-columns: 20rem 1fr;
     height: 100vh;
 }
 
 .main_container{
+    overflow: auto;
+}
+
+.sidebar {
+    overflow: auto;
 }

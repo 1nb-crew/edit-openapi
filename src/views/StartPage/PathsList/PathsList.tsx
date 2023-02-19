@@ -1,31 +1,37 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import classes from './style.module.css';
 import { Button, Drawer } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
 import FileSelector from '../../../components/FileSelector/FileSelector';
+import { AppContext } from '../StartPage';
 
 function render() {
-  const [isImportShown, setIsTooltipShown] = useState(false);
+  const [isImportShown, setIsImportShown] = useState(false);
+  const appState = useContext(AppContext);
 
   const handleButtonClick = () => {
-    setIsTooltipShown(true);
+    setIsImportShown(true);
+  };
+
+  const handleFileLoad = () => {
+    setIsImportShown(false);
   };
 
   return (
     <section className={classes.root}>
       <div>
-        <Button
-          icon={<PlusOutlined />}
-          type="primary"
-          onClick={handleButtonClick}
-        ></Button>
-        <Drawer
-          visible={isImportShown}
-          placement="left"
-          onClose={() => setIsTooltipShown(false)}
-        >
-          <FileSelector></FileSelector>
-        </Drawer>
+        <Button type="primary" onClick={handleButtonClick}>
+          Import from file
+        </Button>
+        <div>{appState?.schema.openapi}</div>
+        {isImportShown ? (
+          <Drawer
+            open={true}
+            placement="left"
+            onClose={() => setIsImportShown(false)}
+          >
+            <FileSelector onConfirm={handleFileLoad}></FileSelector>
+          </Drawer>
+        ) : null}
       </div>
     </section>
   );
