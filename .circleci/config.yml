@@ -29,7 +29,7 @@ jobs:
             npm i & node --version
       - run:
           name: Install dependencies
-          command:
+          command: |
             export PATH=$HOME/.volta/bin:$PATH
             npm run prettier
 
