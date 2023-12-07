@@ -20,6 +20,9 @@ jobs:
       - node/install:
           node-version: '16.13'
       - run:
+          name: 'Install volta'
+          node-version: 'curl https://get.volta.sh | bash'
+      - run:
           name: Install dependencies
           command: 'npm i & node --version'
       - run:
