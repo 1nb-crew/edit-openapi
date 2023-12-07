@@ -5,13 +5,9 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/configuration-reference/#jobs
 jobs:
-  lint:
-    # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/configuration-reference/#executor-job
+  install:
     docker:
       - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/configuration-reference/#steps
     steps:
       - checkout
       - run:
@@ -27,15 +23,30 @@ jobs:
           command: |
             export PATH=$HOME/.volta/bin:$PATH
             npm i & node --version
+  lint:
+    docker:
+      - image: cimg/base:stable
+    steps:
       - run:
-          name: Install dependencies
+          name: Lint
           command: |
             export PATH=$HOME/.volta/bin:$PATH
-            npm run prettier
+            npm run lint
+  test:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - run:
+          name: Test
+          command: |
+            export PATH=$HOME/.volta/bin:$PATH
+            npm run test
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
   build:
     jobs:
+      - install
       - lint
+      - test
