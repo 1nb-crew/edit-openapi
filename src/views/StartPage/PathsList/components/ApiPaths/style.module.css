@@ -1,9 +1,7 @@
 .path {
-    max-width: 16rem;
-
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-
-    cursor: pointer;
+  max-width: 16rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
 }

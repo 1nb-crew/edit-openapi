@@ -1,14 +1,14 @@
 .app {
-    display: grid;
-    grid-template-columns: 20rem 1fr;
-    height: 100vh;
+  display: grid;
+  grid-template-columns: 20rem 1fr;
+  height: 100vh;
 }
 
-.main_container{
-    overflow: auto;
+.main_container {
+  overflow: auto;
 }
 
 .sidebar {
-    overflow: auto;
-    border-right: 1px solid #e6f7ff;
+  overflow: auto;
+  border-right: 1px solid #e6f7ff;
 }

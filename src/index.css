@@ -1,6 +1,6 @@
-@import "normalize.css";
+@import 'normalize.css';
 
-:root{
+:root {
   font-size: 62.5%;
   line-height: 1.6rem;
   font-weight: 400;
