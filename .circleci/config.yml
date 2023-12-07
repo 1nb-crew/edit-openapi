@@ -24,10 +24,10 @@ jobs:
             volta install npm
       - run:
           name: Install dependencies
-          command:
+          command: |
             export PATH=$VOLTA_HOME:$PATH
-            npm i & node --version
             echo $PATH
+            npm i & node --version
       - run:
           name: Install dependencies
           command: 'npm run prettier'
