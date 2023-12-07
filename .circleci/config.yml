@@ -18,10 +18,10 @@ jobs:
           name: Install volta
           command: |
             curl https://get.volta.sh | bash
-            & echo 'export VOLTA_HOME=$HOME/.volta' >> $BASH_ENV
-            & echo 'export PATH=$VOLTA_HOME:$PATH' >> $BASH_ENV
-            & volta install node
-            & volta install npm
+            echo 'export VOLTA_HOME=$HOME/.volta' >> $BASH_ENV
+            echo 'export PATH=$VOLTA_HOME:$PATH' >> $BASH_ENV
+            volta install node
+            volta install npm
       - run:
           name: Install dependencies
           command: 'npm i & node --version'
