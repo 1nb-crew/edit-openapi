@@ -24,7 +24,7 @@ jobs:
             volta install npm
       - run:
           name: Install dependencies
-          command: 'npm i & node --version'
+          command: 'ls & npm i & node --version'
       - run:
           name: Install dependencies
           command: 'npm run prettier'
