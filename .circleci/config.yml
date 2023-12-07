@@ -21,10 +21,14 @@ jobs:
           node-version: '16.13'
       - run:
           name: Install volta
-          command: 'curl https://get.volta.sh | bash'
+          command: "curl https://get.volta.sh | bash 
+            & echo 'export VOLTA_HOME=$HOME/.volta' >> $BASH_ENV 
+            & echo 'export PATH=$VOLTA_HOME:$PATH' >> $BASH_ENV
+            & volta install node 
+            & volta install npm"
       - run:
           name: Install dependencies
-          command: 'npm i & volta setup & node --version'
+          command: 'npm i & node --version'
       - run:
           name: Install dependencies
           command: 'npm run prettier'
