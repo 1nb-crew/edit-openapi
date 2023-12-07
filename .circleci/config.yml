@@ -22,11 +22,25 @@ jobs:
           name: Install dependencies
           command: |
             export PATH=$HOME/.volta/bin:$PATH
-            npm i & node --version
+            npm i
   lint:
     docker:
       - image: cimg/base:stable
     steps:
+      - checkout
+      - run:
+          name: Install volta
+          command: |
+            curl https://get.volta.sh | bash
+            export VOLTA_HOME=$HOME/.volta/bin
+            export PATH=$HOME/.volta/bin:$PATH
+            volta install node
+            volta install npm
+      - run:
+          name: Install dependencies
+          command: |
+            export PATH=$HOME/.volta/bin:$PATH
+            npm i
       - run:
           name: Lint
           command: |
@@ -36,6 +50,20 @@ jobs:
     docker:
       - image: cimg/base:stable
     steps:
+      - checkout
+      - run:
+          name: Install volta
+          command: |
+            curl https://get.volta.sh | bash
+            export VOLTA_HOME=$HOME/.volta/bin
+            export PATH=$HOME/.volta/bin:$PATH
+            volta install node
+            volta install npm
+      - run:
+          name: Install dependencies
+          command: |
+            export PATH=$HOME/.volta/bin:$PATH
+            npm i
       - run:
           name: Test
           command: |
