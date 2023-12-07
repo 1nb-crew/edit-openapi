@@ -22,6 +22,7 @@ jobs:
             export PATH=$VOLTA_HOME:$PATH
             volta install node
             volta install npm
+            export PATH=$VOLTA_HOME:$PATH
       - run:
           name: Install dependencies
           command: 'echo $PATH'
