@@ -9,12 +9,12 @@ import {
   UploadProps,
 } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-import { Props } from './types';
+import { FileSelectorProps } from './types';
 import { AppContext } from '../../views/StartPage/StartPage';
 
 const { Text } = Typography;
 
-function render({ onConfirm }: Props) {
+function render({ onConfirm }: FileSelectorProps) {
   const [fileList, setFileList] = useState<UploadFile[]>([]);
   const [error, setError] = useState<string>('');
 
@@ -59,7 +59,12 @@ function render({ onConfirm }: Props) {
     <section className={classes.root}>
       <Space direction="vertical">
         <Upload {...props}>
-          <Button icon={<UploadOutlined />}>Click to Upload</Button>
+          <Button
+            data-testid={'eo-file-selector__button'}
+            icon={<UploadOutlined />}
+          >
+            Click to Upload
+          </Button>
         </Upload>
         <div>
           {error ? <Text type="danger">{error.toString()}</Text> : null}

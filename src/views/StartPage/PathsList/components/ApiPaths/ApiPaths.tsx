@@ -9,7 +9,7 @@ function render({ paths, onPathClick }: Props) {
   return (
     <Space direction="vertical">
       {paths
-        ? Object.entries(paths).map(([key, value], i) => (
+        ? Object.entries(paths).map(([key]) => (
             <Button
               key={key}
               className={classes.path}
