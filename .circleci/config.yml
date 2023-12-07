@@ -25,7 +25,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            export PATH=$VOLTA_HOME:$PATH
+            export PATH=$HOME/.volta/bin:$PATH
             echo $PATH
             npm i & node --version
       - run:
