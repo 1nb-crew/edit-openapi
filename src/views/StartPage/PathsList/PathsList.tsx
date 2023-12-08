@@ -34,6 +34,7 @@ function render() {
 
       {isImportShown ? (
         <Drawer
+          data-testid="import-schema-drawer"
           open={true}
           placement="left"
           onClose={() => setIsImportShown(false)}

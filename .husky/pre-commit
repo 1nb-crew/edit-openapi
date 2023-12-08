@@ -4,4 +4,4 @@
 npm run prettier
 npm run lint
 npm run tsc
-npm run test -- --changed HEAD~1 --run
+npm run test:unit -- --changed HEAD~1 --run
