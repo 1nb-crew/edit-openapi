@@ -4,13 +4,19 @@ import 'dotenv/config';
 const port = 3001;
 
 export default defineConfig({
-  testDir: './e2e',
+  testDir: './tests/e2e',
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-  reporter: process.env.CI ? 'dot' : ['list', { printSteps: true }],
+  outputDir: 'tests/e2e/results',
+  reporter: process.env.CI
+    ? 'dot'
+    : [
+        ['list', { printSteps: true }],
+        ['html', { outputFolder: 'tests/e2e/report', open: 'on-failure' }],
+      ],
   /* Test case timeout (includes fixtures loading). */
   timeout: 10 * 1000,
   expect: {

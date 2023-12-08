@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "bootstrap": "npm install && playwright install --with-deps chromium",
     "dev": "npm run tsc:watch & vite --open",
     "build": "tsc && vite build",
     "preview": "vite preview --open",
@@ -15,7 +16,8 @@
     "tsc:watch": "tsc --noEmit --watch",
     "tsc": "tsc",
     "test:unit": "vitest run",
-    "test:unit:dev": "vitest watch",
+    "test:unit:coverage": "vitest run --coverage",
+    "test:unit:dev": "vitest --coverage --ui",
     "test:e2e": "playwright test",
     "test:e2e:dev": "npm run build && playwright test --ui"
   },
@@ -38,6 +40,8 @@
     "@typescript-eslint/eslint-plugin": "6.13.2",
     "@typescript-eslint/parser": "6.13.2",
     "@vitejs/plugin-react-swc": "3.5.0",
+    "@vitest/coverage-v8": "1.0.2",
+    "@vitest/ui": "1.0.2",
     "dotenv": "16.3.1",
     "eslint": "8.55.0",
     "eslint-config-prettier": "9.1.0",
