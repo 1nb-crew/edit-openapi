@@ -28,7 +28,7 @@ jobs:
           path: dist/
           retention-days: 1
       - name: Run Unit Tests
-        run: npm run test:unit
+        run: npm run test:unit:coverage
       - name: Run E2e Tests
         run: npm run test:e2e
       - uses: actions/upload-artifact@v3
