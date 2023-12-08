@@ -18,5 +18,16 @@ export default defineConfig({
     setupFiles: './src/test/setup.ts',
     css: true,
     include: ['src/**/*.test.{ts,tsx}'],
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'html'],
+      reportsDirectory: './tests/unit/coverage',
+      thresholds: {
+        statements: 30,
+        branches: 30,
+        functions: 10,
+        lines: 30,
+      },
+    },
   },
 });
