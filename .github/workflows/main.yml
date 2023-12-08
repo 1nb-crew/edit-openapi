@@ -24,7 +24,6 @@ jobs:
        - name: Build
          run: npm run build
        - uses: actions/upload-artifact@v3
-         if: always()
          with:
            name: dist
            path: dist/
@@ -34,7 +33,6 @@ jobs:
        - name: Run E2e Tests
          run: npm run test:e2e
        - uses: actions/upload-artifact@v3
-         if: always()
          with:
            name: playwright-report
            path: playwright-report/
