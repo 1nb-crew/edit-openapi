@@ -15,7 +15,7 @@ jobs:
       - name: Print Title of PR
         run: |
           echo '${{ github.event.pull_request.title }}' | grep -q '^\[EO-\d{1,4}\].*$'
-          if [[ $? -eq 0 ]]; then
+          if [ $? -eq 0 ]; then
             echo "Pr title is correct"
             echo $?
           else
