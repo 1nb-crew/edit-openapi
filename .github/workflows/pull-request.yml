@@ -8,6 +8,12 @@ env:
   CI: true
 
 jobs:
+  print_title_of_pr:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Print Title of PR
+        run: echo The Title of your PR is ${{ github.event.pull_request.title }}
+
   test:
     timeout-minutes: 10
     runs-on: ubuntu-latest
