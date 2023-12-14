@@ -12,14 +12,11 @@ jobs:
   check-pr-title:
     runs-on: ubuntu-20.04
     steps:
-      - name: Print Title of PR
+      - name: Check PR title
         run: |
-          echo '${{ github.event.pull_request.title }}' | grep -q '^\[EO-\d{1,4}\].*$'
-          if [ $? -eq 0 ]; then
+          if [[ "${{ github.event.pull_request.title }}" =~  ^\[[A-Z]+-[0-9]+\] ]]; then
             echo "Pr title is correct"
-            echo $?
           else
             echo "Incorrect PR title: should starts with [EO-XXXX] where XXXX is a task number"
-            echo $?
             exit 1
           fi
