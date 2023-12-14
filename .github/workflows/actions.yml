@@ -1,5 +1,4 @@
 name: Test
-description: Test app workflow
 
 on:
   workflow_call:
