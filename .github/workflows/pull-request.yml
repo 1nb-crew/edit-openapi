@@ -9,7 +9,7 @@ env:
 
 jobs:
   test:
-    uses: ./.github/workflows/actions.yml
+    uses: ./.github/workflows/test-workflow.yml
 
   lint:
     timeout-minutes: 10
