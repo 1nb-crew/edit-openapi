@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is running pull request checks 🚀
 
 on:
   pull_request:
-    types: [edited]
+    types: [edited, reopened, opened, synchronize]
 
 env:
   CI: true
@@ -13,4 +13,11 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Print Title of PR
-        run: echo '${{ github.event.pull_request.title }}' | grep -v -q -E '^\[EO-\d{1,4}\].*$'
+        run: |
+            echo '${{ github.event.pull_request.title }}' | grep -v -q -E '^\[EO-\d{1,4}\].*$'
+            if [ $? -eq 0 ]; then
+              echo "Found matching lines"
+            else
+              echo "Failed to find matching lines"
+              exit 1
+            fi
