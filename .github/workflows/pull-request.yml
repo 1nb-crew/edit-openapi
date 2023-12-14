@@ -8,12 +8,6 @@ env:
   CI: true
 
 jobs:
-  check-pr-title:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Print Title of PR
-        run: echo '${{ github.event.pull_request.title }}' | grep -v -E '^\[EO-\d{1,4}\].*$'
-
   test:
     timeout-minutes: 10
     runs-on: ubuntu-latest
