@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Print Title of PR
-        run: echo '${{ github.event.pull_request.title }}' | grep -E '^\[EO-\d{1,4}\].*$' && exit 0
+        run: echo '${{ github.event.pull_request.title }}' | grep -E '^\[EO-\d{1,4}\].*$' || true
 
   test:
     timeout-minutes: 10
