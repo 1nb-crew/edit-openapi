@@ -10,8 +10,4 @@ env:
 
 jobs:
   test:
-    timeout-minutes: 10
-    runs-on: ubuntu-latest
-    steps:
-      - id: foo
-        uses: actions/test-composite-action@v1
+    uses: ./.github/workflows/actions.yml
