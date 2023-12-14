@@ -14,10 +14,9 @@ jobs:
     steps:
       - name: Print Title of PR
         run: |
-            echo '${{ github.event.pull_request.title }}' | grep -v -q -E '^\[EO-\d{1,4}\].*$'
-            if [ $? -eq 0 ]; then
-              echo "Found matching lines"
-            else
-              echo "Failed to find matching lines"
-              exit 1
-            fi
+          if [[ "$(echo '${{ github.event.pull_request.title }}' | grep -q -E '^\[EO-\d{1,4}\].*$' && echo $?)" ]]; then
+            echo "Title is correct"
+          else
+            echo "Incorrect PR title: should starts with [EO-XXXX] where XXXX is a task number"
+            exit 1
+          fi
