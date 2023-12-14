@@ -14,9 +14,9 @@ jobs:
     steps:
       - name: Check PR title
         run: |
-          if [[ "${{ github.event.pull_request.title }}" =~  ^\[[A-Z0-9]+-[0-9]+\] ]]; then
+          if [[ "${{ github.event.pull_request.title }}" =~  ^\[[A-Z]+-[0-9]+\] ]]; then
             echo "Pr title is correct"
           else
-            echo "Incorrect PR title: should starts with [YYYY-XXXX] where XXXX is a task number"
+            echo "Incorrect PR title: should starts with [EO-XXXX] where XXXX is a task number"
             exit 1
           fi
