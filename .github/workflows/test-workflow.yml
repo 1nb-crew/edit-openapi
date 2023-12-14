@@ -2,10 +2,7 @@ name: Test
 
 on:
   workflow_call:
-    inputs:
-      config-path:
-        required: false
-        type: string
+
 jobs:
   test:
     timeout-minutes: 10
