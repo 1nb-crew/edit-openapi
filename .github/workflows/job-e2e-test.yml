@@ -1,10 +1,14 @@
-name: Test
+name: E2e Test
 
 on:
   workflow_call:
 
 jobs:
-  test:
+  build:
+    uses: ./.github/workflows/job-build.yml
+
+  e2e-test:
+    needs: build
     timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
@@ -16,15 +20,11 @@ jobs:
         run: npm ci
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
-      - name: Build
-        run: npm run build
-      - uses: actions/upload-artifact@v3
+      - name: Download the build artifacts
+        uses: actions/download-artifact@v3
         with:
           name: dist
           path: dist/
-          retention-days: 1
-      - name: Run Unit Tests
-        run: npm run test:unit:coverage
       - name: Run E2e Tests
         run: npm run test:e2e
       - uses: actions/upload-artifact@v3

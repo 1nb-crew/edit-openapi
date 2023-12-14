@@ -1,0 +1,34 @@
+name: Main Branch
+run-name: ${{ github.actor }} is running main branch checks and deploy 🚀
+
+on:
+  push:
+    branches: main
+
+env:
+  CI: true
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  unit-test:
+    uses: ./.github/workflows/job-unit-test.yml
+
+  e2e-test:
+    uses: ./.github/workflows/job-e2e-test.yml
+
+  deploy:
+    needs: [unit-test, e2e-test]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v3
+        with:
+          timeout: 300000

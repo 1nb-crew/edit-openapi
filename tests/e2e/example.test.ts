@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 
 test.describe('Main page', () => {
   test('should import schema', async ({ page }) => {
-    await page.goto('/');
+    await page.goto(process.env.BASE_URL || '/');
 
     await expect(page.getByTestId('import-schema-drawer')).not.toBeVisible();
 
