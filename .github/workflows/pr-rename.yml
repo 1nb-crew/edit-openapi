@@ -1,0 +1,22 @@
+name: Pull Request
+run-name: ${{ github.actor }} is running pull request checks 🚀
+
+on:
+  pull_request:
+    types: [edited, reopened, opened, synchronize]
+
+env:
+  CI: true
+
+jobs:
+  check-pr-title:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check PR title
+        run: |
+          if [[ "${{ github.event.pull_request.title }}" =~  ^\[EO+-[0-9]+\] ]]; then
+            echo "Pr title is correct"
+          else
+            echo "Incorrect PR title: should starts with [EO-XXXX] where XXXX is a task number"
+            exit 1
+          fi
