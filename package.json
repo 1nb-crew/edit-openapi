@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "bootstrap": "npm install && playwright install --with-deps chromium",
-    "dev": "npm run tsc:watch & vite --open",
+    "dev": "npm run tsc:watch & (cp ./.env.local .env && vite --open)",
     "build": "tsc && vite build",
     "preview": "vite preview --open",
     "lint": "run-p lint:*",

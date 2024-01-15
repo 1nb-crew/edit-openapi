@@ -23,8 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 
-#test artefacts
-/tests/e2e/results/
-/tests/e2e/report/
-/playwright/.cache/
-/tests/unit/
+README.md
