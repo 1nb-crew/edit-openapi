@@ -1,5 +1,5 @@
-name: Pull Request
-run-name: ${{ github.actor }} is running pull request checks 🚀
+name: Pull Request Title
+run-name: ${{ github.actor }} is checking the pull request title 🚀
 
 on:
   pull_request:
@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Check PR title
         run: |
-          if [[ "${{ github.event.pull_request.title }}" =~  ^\[EO+-[0-9]+\] ]]; then
+          if [[ "${{ github.event.pull_request.title }}" =~  ^\[EO-[0-9]+\] ]]; then
             echo "Pr title is correct"
           else
             echo "Incorrect PR title: should starts with [EO-XXXX] where XXXX is a task number"
